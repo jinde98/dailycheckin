@@ -1,0 +1,30 @@
+name: AliyunDrive Sign-in
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  
+  workflow_dispatch:  
+
+jobs:
+  sign-in:
+    runs-on: ubuntu-latest
+
+    env:  # 设置环境变量
+      REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+      PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install requests  # 已经包括requests，如果有其他依赖，可以在这里添加
+
+    - name: Execute sign-in script
+      run: python alicheckin.py
