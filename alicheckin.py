@@ -1,12 +1,13 @@
 import requests
 import json
+import os
 
 # 常量定义
 UPDATE_ACCESS_TOKEN_URL = "https://auth.aliyundrive.com/v2/account/token"
 SIGN_IN_URL = "https://member.aliyundrive.com/v1/activity/sign_in_list"
 REWARD_URL = "https://member.aliyundrive.com/v1/activity/sign_in_reward"
-REFRESH_TOKEN = '0007bae344f4453c83dd81e840f4c2a2'
-PUSHPLUS_TOKEN = 'cf718e26320d471aba20faa4279e9235'
+REFRESH_TOKEN = os.getenv("REFRESH_TOKEN")
+PUSHPLUS_TOKEN = os.getenv("PUSHPLUS_TOKEN")
 
 HEADERS = {"Content-Type": "application/json"}
 
