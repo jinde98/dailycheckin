@@ -2,7 +2,7 @@ name: AliyunDrive Sign-in
 
 on:
   schedule:
-    - cron: '0 1 * * *'  
+    - cron: '2 0 * * *'  
   workflow_dispatch:  
 
 jobs:
