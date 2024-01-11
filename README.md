@@ -13,10 +13,7 @@
 
 ### 1. 获取 RefreshToken
 
-1. 打开浏览器并登录阿里云盘网站。
-2. 在浏览器的开发者工具中（通常可以通过 `F12` 键打开），查找网络请求。
-3. 执行一次签到操作，然后在开发者工具的网络选项卡中找到对应的请求。
-4. 在请求头或请求体中查找 `refresh_token` 字段，复制该值。
+这个链接教你如何获得 Refresh Token：https://alist.nn.ci/zh/guide/drivers/aliyundrive.html
 
 ### 2. 设置 PushPlus Token
 
@@ -29,7 +26,7 @@
 2. 转到 `Settings` > `Secrets`。
 3. 添加两个新的 secrets：
    - `REFRESH_TOKEN`：粘贴您从阿里云盘获取的 `refresh_token`。
-   - `PUSHPLUS_TOKEN`：粘贴您从 PushPlus 获取的 Token。没有pushplus，也可以运行，只是没有通知了
+   - `PUSHPLUS_TOKEN`：粘贴您从 PushPlus 获取的 Token。没有pushplus，也可以正常运行签到，只是没有通知了
 
 ## 配置 GitHub Actions
 
@@ -38,4 +35,4 @@
 3. 修改启动时间，可以根据自己的要求来改。以下是示例
    on:
   schedule:
-    - cron: '0 5 * * *'
+    - cron: '0 5 * * *' 这里的是UTC时间，换算北京时间就是13点
