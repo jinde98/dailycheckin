@@ -11,7 +11,9 @@
 
 ## 如何配置
 
-### 1. 获取 RefreshToken
+首先要fork本项目到自己的仓库，除了阿里网盘的refresh token是必要设置，其他都不是必要的。
+
+### 1. 获取 RefreshToken（这个是必要的）
 
 这个链接教你如何获得 Refresh Token：https://alist.nn.ci/zh/guide/drivers/aliyundrive.html
 
@@ -25,14 +27,14 @@
 1. 打开您的 GitHub 仓库。
 2. 转到 `Settings` > `Secrets`。
 3. 添加两个新的 secrets：
-   - `REFRESH_TOKEN`：粘贴您从阿里云盘获取的 `refresh_token`。
-   - `PUSHPLUS_TOKEN`：粘贴您从 PushPlus 获取的 Token。没有pushplus，也可以正常运行签到，只是没有通知了
+   - `REFRESH_TOKEN`：粘贴您从阿里云盘获取的 `refresh_token`。（这个是必要的）
+   - `PUSHPLUS_TOKEN`：粘贴您从 PushPlus 获取的 Token。没有pushplus，也可以正常运行签到，只是没有通知而已。
 
 ## 配置 GitHub Actions
 
 1. 在您的 GitHub 仓库中，确保存在 `.github/workflows/` 目录。
-2. 创建或编辑一个 YAML 文件，本项目是run.yaml
-3. 修改启动时间，可以根据自己的要求来改。以下是示例
+2. 创建或编辑一个 YML 文件，本项目是run.yml
+3. 修改启动时间，可以根据自己的要求来（不修改就是用默认的）。以下是示例
    on:
   schedule:
     - cron: '0 5 * * *' 这里的是UTC时间，换算北京时间就是13点
