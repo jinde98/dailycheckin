@@ -18,7 +18,7 @@ def run():
         tilte += "【天翼】"
 
     send = MessageSend()
-    send.send_all(message_tokens,'每日签到',content)
+    send.send_all(message_tokens,title+'每日签到',content)
 if __name__ == "__main__":
     run()
 
