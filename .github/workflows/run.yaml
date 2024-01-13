@@ -1,4 +1,4 @@
-name: AliyunDrive Sign-in
+name: Drive Sign-in
 
 on:
   schedule:
@@ -6,15 +6,11 @@ on:
   workflow_dispatch:  
 
 jobs:
-  sign-in:
+  sign_in:
     runs-on: ubuntu-latest
 
-    env:  # 设置环境变量
-      REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-      PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
@@ -24,7 +20,20 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install requests  # 已经包括requests，如果有其他依赖，可以在这里添加
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Execute sign-in script
-      run: python alicheckin.py
+    - name: Run sign-in script
+      run: python main.py
+      env:
+        ALI_REFRESH_TOKEN: ${{ secrets.ALI_REFRESH_TOKEN }}
+        TY_USER: ${{ secrets.TY_USER }}
+        TY_PWD: ${{ secrets.TY_PWD }}
+        YOUDAO_COOKIE: ${{ secrets.YOUDAO_COOKIE }}
+        PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+        SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+        WECOM_TOKENS: ${{ secrets.WECOM_TOKENS }}
+        WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        BARK_DEVICEKEY: ${{ secrets.BARK_DEVICEKEY }}
+        FEISHU_DEVICEKEY: ${{ secrets.FEISHU_DEVICEKEY }}
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
