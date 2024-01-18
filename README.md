@@ -2,7 +2,7 @@
 
 ## 功能简介
 
-这个 GitHub Action 用于执行各种服务的每日签到任务。
+这个 GitHub Action 用于执行各种服务的每日签到任务，目前支持有道、阿里云盘、天翼云盘。
 
 ## 如何配置
 
@@ -13,7 +13,10 @@
    - `ALI_REFRESH_TOKEN`: 你的阿里云盘刷新令牌。这个链接教你如何获得 Refresh Token：https://alist.nn.ci/zh/guide/drivers/aliyundrive.html
    - `TY_USER`: 你的天翼云盘用户名。
    - `TY_PWD`: 你的天翼云盘密码。
-   - `YOUDAO_COOKIE`: 你的有道云笔记签到 Cookie。
+   - `YOUDAO_COOKIE`: 你的有道云笔记签到 Cookie。登录有道网页版本，按F12后选择 网络network标签，刷新下网页随便点一个加载的页面，按下图内容复制
+     
+      ![image](https://github.com/jinde98/dailycheckin/assets/127750182/2fc6fc11-b1bd-4d6c-b4ff-f0f42d5d5ffe)
+
    - `PUSHPLUS_TOKEN`: 你的 Pushplus 令牌。
    - `SERVERCHAN_SENDKEY`: 你的 ServerChan 发送密钥。
    - `WECOM_TOKENS`: 你的企业微信令牌（如果有多个请用逗号分隔）。
