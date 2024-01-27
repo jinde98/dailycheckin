@@ -12,7 +12,7 @@ def signin(cookie):
     ad_space = 0
     refresh_cookies_res = requests.get("http://note.youdao.com/login/acc/pe/getsess?product=YNOTE", headers=headers)
     cookies = dict(refresh_cookies_res.cookies)
-    print(cookies)
+
     url = "https://note.youdao.com/yws/api/daupromotion?method=sync"
     res = requests.post(url=url, cookies=cookies)
     if "error" not in res.text:
