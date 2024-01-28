@@ -6,8 +6,11 @@ import youdao , aliyunpan, tianyiyunpan
 def run():
     content =''
     title = ""
-    if youdao_cookie != None:
-        content = youdao.signin(youdao_cookie) +'\n\n'
+    if youdao_user != None:
+        youdao=Youdao(youdao_user,redis_info).run
+        content= youdao.run() + '\n\n'
+    # if youdao_cookie != None:
+    #     content = youdao.signin(youdao_cookie) +'\n\n'
         title = "【有道】"
     if ali_refresh_token != None :
         access_token, _ = aliyunpan.get_access_token(ali_refresh_token)
