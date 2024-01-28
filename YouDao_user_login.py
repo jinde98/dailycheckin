@@ -34,7 +34,6 @@ class Youdao:
             print('有道未配置账户。')
             return 
         chrome_options = Options()
-        chrome_options.binary_location = 'c:\\Users\\Administrator\\AppData\\Local\\MyChrome\\Chrome\\Application\\chrone.exe'
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--disable-gpu')
         driver = webdriver.Chrome(options=chrome_options)
