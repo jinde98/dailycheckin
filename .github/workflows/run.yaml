@@ -36,4 +36,6 @@ jobs:
         WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
         BARK_DEVICEKEY: ${{ secrets.BARK_DEVICEKEY }}
         FEISHU_DEVICEKEY: ${{ secrets.FEISHU_DEVICEKEY }}
+        YOUDAO_USER: ${{ secrets.YOUDAO_USER }}
+        REDIS_INFO: ${{ secrets.REDIS_INFO }}
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
