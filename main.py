@@ -7,8 +7,8 @@ def run():
     content =''
     title = ""
     if youdao_user != None:
-        youdao=YouDao_user_login.Youdao(youdao_user,redis_info).run
-        content= youdao.run() + '\n\n'
+        youdao_sign=YouDao_user_login.Youdao(youdao_user,redis_info).run
+        content= youdao_sign.run() + '\n\n'
     # if youdao_cookie != None:
     #     content = youdao.signin(youdao_cookie) +'\n\n'
         title = "【有道】"
