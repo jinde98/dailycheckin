@@ -1,13 +1,13 @@
 
 from message_send import MessageSend
-from config import message_tokens, youdao_cookie,ali_refresh_token,ty_pwd,ty_user
-import youdao , aliyunpan, tianyiyunpan
+from config import message_tokens, youdao_cookie,ali_refresh_token,ty_pwd,ty_user,youdao_user, redis_info
+import youdao, aliyunpan, tianyiyunpan,YouDao_user_login
 
 def run():
     content =''
     title = ""
     if youdao_user != None:
-        youdao=Youdao(youdao_user,redis_info).run
+        youdao=YouDao_user_login.Youdao(youdao_user,redis_info).run
         content= youdao.run() + '\n\n'
     # if youdao_cookie != None:
     #     content = youdao.signin(youdao_cookie) +'\n\n'
