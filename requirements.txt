@@ -1,2 +1,4 @@
 requests
 rsa
+redis
+selenium 
