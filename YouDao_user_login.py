@@ -1,6 +1,7 @@
 import requests,redis,json,time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from message_send import MessageSend
@@ -33,6 +34,7 @@ class Youdao:
             print('有道未配置账户。')
             return 
         chrome_options = Options()
+        chrome_options.binary_location = 'c:\\Users\\Administrator\\AppData\\Local\\MyChrome\\Chrome\\Application\\chrone.exe'
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--disable-gpu')
         driver = webdriver.Chrome(options=chrome_options)
@@ -44,7 +46,7 @@ class Youdao:
         driver.find_element(By.XPATH, '//*[@id="user"]').send_keys(self.user)
         driver.find_element(By.XPATH, '//*[@id="pass"]').send_keys(self.passwd)
         driver.find_element(By.XPATH, '//*[@id="loginbtn"]').click()
-        time.sleep(15)   
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.CLASS_NAME, "personal-container"))) 
         cookies=driver.get_cookies()
         specific_cookies = {}
         for cookie in cookies:
@@ -134,6 +136,6 @@ class Youdao:
 if __name__ == "__main__":
     # if youdao_cookie != None:
     youdao=Youdao(youdao_user,redis_info)
-    msg= print(youdao.run()) 
+    print(youdao.run()) 
     # send= MessageSend()
     # send.send_all(message_tokens,'有道笔记签到',msg)
