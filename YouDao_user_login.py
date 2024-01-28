@@ -44,7 +44,7 @@ class Youdao:
         driver.find_element(By.XPATH, '//*[@id="user"]').send_keys(self.user)
         driver.find_element(By.XPATH, '//*[@id="pass"]').send_keys(self.passwd)
         driver.find_element(By.XPATH, '//*[@id="loginbtn"]').click()
-        time.sleep(5)   
+        time.sleep(15)   
         cookies=driver.get_cookies()
         specific_cookies = {}
         for cookie in cookies:
