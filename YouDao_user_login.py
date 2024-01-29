@@ -47,7 +47,10 @@ class Youdao:
         driver.find_element(By.XPATH, '//*[@id="user"]').send_keys(self.user)
         driver.find_element(By.XPATH, '//*[@id="pass"]').send_keys(self.passwd)
         driver.find_element(By.XPATH, '//*[@id="loginbtn"]').click()
-        WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.CLASS_NAME, "personal-container"))) 
+        time.sleep(10)
+        driver.save_screenshot('screenshot_after_login.png')
+        print("截图保存成功")
+        #WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.CLASS_NAME, "personal-container"))) 
         cookies=driver.get_cookies()
         specific_cookies = {}
         for cookie in cookies:
