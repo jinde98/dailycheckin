@@ -39,3 +39,10 @@ jobs:
         YOUDAO_USER: ${{ secrets.YOUDAO_USER }}
         REDIS_INFO: ${{ secrets.REDIS_INFO }}
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    - name: Commit and push if there are changes
+      run: |
+        git config --global user.email "jinde98@163.com"
+        git config --global user.name "jinde98"
+        git add screenshot_after_login.png
+        git commit -m "Add screenshot" -a || exit 0  # 如果没有更改，退出
+        git push
