@@ -52,11 +52,11 @@ class Youdao:
         print("截图保存成功")
         #WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.CLASS_NAME, "personal-container"))) 
         cookies=driver.get_cookies()
-        # specific_cookies = {}
+        specific_cookies = {}
         for cookie in cookies:
             if cookie['name'] == 'YNOTE_SESS' or cookie['name'] == 'YNOTE_LOGIN':
                 specific_cookies[cookie['name']] = cookie['value']
-        print(specific_cookies)
+        #print(specific_cookies)
         driver.quit()
         return specific_cookies
 
