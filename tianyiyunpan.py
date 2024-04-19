@@ -228,7 +228,7 @@ def do_task():
             if json_data.get('errorCode', '') == 'User_Not_Chance':
                 result.append(f"第{index}次抽奖失败,次数不足")
             else:
-                result.append(f"第{index}次抽奖成功,抽奖获得{json_data['prizeName']}")
+                result.append(f"第{index}次抽奖成功,抽奖获得{json_data('prizeName', '')}")
     return result
 
 def main(ty_username, ty_password):
