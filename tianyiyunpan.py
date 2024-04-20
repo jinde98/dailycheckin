@@ -220,6 +220,7 @@ def do_task():
     result = []
     for index, task in enumerate(tasks):
         json_data = do_get(task)
+        time.sleep(5)
         if index == 0:
             # 签到
             if json_data['isSign']:
