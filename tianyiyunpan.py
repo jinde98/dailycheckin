@@ -202,6 +202,7 @@ def do_get(task_url):
     response = client.get(task_url)
     response.raise_for_status()
     json_data = response.json()
+    print(json_data)
     return json_data
 
 
