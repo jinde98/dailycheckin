@@ -218,8 +218,9 @@ def do_task():
 
     result = []
     for index, task in enumerate(tasks):
+        if index > 1:
+            time.sleep(5) # 避免第2,3次抽奖请求过快
         json_data = do_get(task)
-        time.sleep(5)
         if index == 0:
             # 签到
             if json_data['isSign']:
