@@ -87,8 +87,9 @@ class Ali:
                 return '未配置redis'
             redis_key_access = f"Ali_access_token"
             access_token = self.redis_conn.get(redis_key_access)
-            redis_key_refresh = f"Ali_fresh_token"
+            redis_key_refresh = f"Ali_refresh_token"
             refresh_token = self.redis_conn.get(redis_key_refresh)
+            print("从redis取得阿里网盘token")
             return access_token, refresh_token
         except Exception as e:
             print(f"Get Redis error: {e}")
