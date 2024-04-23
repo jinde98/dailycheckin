@@ -13,8 +13,8 @@ def run():
     #     content = youdao.signin(youdao_cookie) +'\n\n'
         title = "【有道】"
     if ali_refresh_token != None :
-        access_token, _ = aliyunpan.get_access_token(ali_refresh_token)
-        content += aliyunpan.sign_in(access_token) + '\n\n'
+        Aliyun=aliyunpan.Ali(ali_refresh_token, redis_info)
+        content += Aliyun.run() + '\n\n'
         title += "【阿里】"
     if ty_user != None and ty_pwd != None:
         content += tianyiyunpan.main(ty_user, ty_pwd)
