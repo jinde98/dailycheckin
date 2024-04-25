@@ -1,4 +1,4 @@
-import requests, redis
+import requests, redis, datetime
 from message_send import MessageSend
 from config import message_tokens, ali_refresh_token
 # 常量定义
@@ -66,46 +66,38 @@ class Ali:
             if not self.redis_conn:
                 print('未配置redis。')
                 return '未配置redis。'
-            if not access_token and not refresh_token:
-                print('未配置access_token和refresh_token。')
-                return '未配置access_token和refresh_token。'
-            if access_token:
-                redis_key_access = f"Ali_access_token"
-                self.redis_conn.set(redis_key_access, access_token)
+            if not refresh_token:
+                print('未配置refresh_token。')
+                return '未配置refresh_token。'
             if refresh_token:
                 redis_key_refresh = f"Ali_refresh_token"
                 self.redis_conn.set(redis_key_refresh, refresh_token)
-            print(f"更新{redis_key_access}和{redis_key_refresh}到redis。")
-            return f"更新{redis_key_access}和{redis_key_refresh}到redis。"
+            print(f"更新{redis_key_refresh}到redis。")
+            return f"更新{redis_key_refresh}到redis。"
         except Exception as e:
-            print(f"{redis_key_access} and {redis_key_refresh}Store Redis error: {e}")
-            return f"更新{redis_key_access}和{redis_key_refresh}到redis失败,{e}。"
+            print(f"{redis_key_refresh}Store Redis error: {e}")
+            return f"更新{redis_key_refresh}到redis失败,{e}。"
     def get_redis(self) -> str:
         try:
             if self.redis_conn is None:
                 print('未配置redis')
                 return '未配置redis'
-            redis_key_access = f"Ali_access_token"
-            access_token = self.redis_conn.get(redis_key_access)
             redis_key_refresh = f"Ali_refresh_token"
             refresh_token = self.redis_conn.get(redis_key_refresh)
             print("从redis取得阿里网盘token")
-            return access_token, refresh_token
+            return refresh_token
         except Exception as e:
             print(f"Get Redis error: {e}")
             return f"Get Redis error: {e}"
+        
     def run(self):
-        access_token, refresh_token =self.get_redis()
+        refresh_token =self.get_redis()
+        access_token, refresh_token =self.get_access_token(refresh_token)
         ali_content = self.sign_in(access_token)
-        if '阿里网盘签到成功' in ali_content:
-            return ali_content
-        if refresh_token:
-            access_token, refresh_token = self.get_access_token(refresh_token)
-        elif self.refresh_token:
-            access_token, refresh_token = self.get_access_token(self.refresh_token)
-        if access_token:
-            ali_content = self.sign_in(access_token) + self.store_redis(access_token, refresh_token)
-            return ali_content
+        today = datetime.datetime.now().day
+        if today == '26' or today== '10':
+            ali_content += self.store_redis(refresh_token = refresh_token)
+        return ali_content
             
 if __name__ == "__main__":
     Aliyun=aliyunpan.Ali(ali_refresh_token, redis_info)
