@@ -95,7 +95,7 @@ class Ali:
         access_token, refresh_token =self.get_access_token(refresh_token)
         ali_content = self.sign_in(access_token)
         today = datetime.datetime.now().day
-        if today == '26' or today== '10':
+        if today == 26 or today== 10:
             ali_content += self.store_redis(refresh_token = refresh_token)
         return ali_content
             
