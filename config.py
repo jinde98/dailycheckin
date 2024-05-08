@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 import os
 
 ali_refresh_token =  os.environ.get('ALI_REFRESH_TOKEN')
