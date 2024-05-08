@@ -16,6 +16,7 @@
    - `YOUDAO_COOKIE`: 你的有道云笔记签到 Cookie。登录有道网页版本，按F12后选择 网络network标签，刷新下网页随便点一个加载的页面，按下图内容复制
      
       ![image](https://github.com/jinde98/dailycheckin/assets/127750182/2fc6fc11-b1bd-4d6c-b4ff-f0f42d5d5ffe)
+   - `REDIS_INFO` ：REDIS存储有道笔记cookie和阿里云盘的刷新令牌，保证自动更新令牌。（有道的笔记在Action中登录并获取cookie还有问题，但在本地运行没问题）可以去官网https://redis.io/try-free/ 申请一个账户，免费有30m空间，足够保存令牌信息了。
 
    - `PUSHPLUS_TOKEN`: 你的 Pushplus 令牌。
    - `SERVERCHAN_SENDKEY`: 你的 ServerChan 发送密钥。
@@ -51,7 +52,10 @@
 - **飞书（Lark）**: 通知服务。
 - **Telegram**: 通知服务。
 
-后续待增加。。。。
+## 待改进内容
+- **有道云笔记** 自动更新cookies
+其他签到内容.......
+后续待增加.......
 
 ## 感谢
 
