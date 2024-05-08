@@ -2,4 +2,4 @@ requests
 rsa
 redis
 selenium 
-dotenv
+python-dotenv
