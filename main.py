@@ -1,7 +1,7 @@
 
 from message_send import MessageSend
 from config import message_tokens, youdao_cookie,ali_refresh_token,ty_pwd,ty_user,youdao_user, redis_info
-import youdao, aliyunpan, tianyiyunpan,YouDao_user_login
+import aliyunpan, tianyiyunpan,YouDao_user_login
 
 def run():
     content =''
