@@ -1,6 +1,6 @@
 import requests, redis, datetime
 from message_send import MessageSend
-from config import message_tokens, ali_refresh_token
+from config import message_tokens, ali_refresh_token, redis_info
 # 常量定义
 UPDATE_ACCESS_TOKEN_URL = "https://auth.aliyundrive.com/v2/account/token"
 SIGN_IN_URL = "https://member.aliyundrive.com/v1/activity/sign_in_list"
@@ -61,7 +61,7 @@ class Ali:
         data = response.json()
         return '无奖励' if not data['result'] else data["result"]["notice"]
 
-    def store_redis(self, access_token:str = None, refresh_token:str = None) -> str:
+    def store_redis(self, refresh_token:str = None) -> str:
         try:
             if not self.redis_conn:
                 print('未配置redis。')
@@ -100,5 +100,5 @@ class Ali:
         return ali_content
             
 if __name__ == "__main__":
-    Aliyun=aliyunpan.Ali(ali_refresh_token, redis_info)
+    Aliyun=Ali(ali_refresh_token, redis_info)
     Aliyun.run()
