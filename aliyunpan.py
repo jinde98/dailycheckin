@@ -46,11 +46,11 @@ class Ali:
         if data.get("success"):
             count = data.get("result", {}).get("signInCount", 0)
             reward = self._get_sign_in_reward(access_token, count)
-            print(f"阿里网盘签到成功,本月已签到{count}天, {reward}")
-            return f"阿里网盘签到成功,本月已签到{count}天, {reward}"
+            print(f"阿里网盘签到成功,本月已签到{count}天, {reward}。")
+            return f"阿里网盘签到成功,本月已签到{count}天, {reward}。"
         else:
-            print(data.get("message", "阿里网盘签到未知原因失败"))
-            return data.get("message", "阿里网盘签到未知原因失败")
+            print(data.get("message", "阿里网盘签到未知原因失败。"))
+            return data.get("message", "阿里网盘签到未知原因失败。")
         
     def _get_sign_in_reward(self, access_token, count):
         """获取签到奖励"""
