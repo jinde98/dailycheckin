@@ -209,7 +209,7 @@ userId: 2
         lng: str = "102.182324",
         reserve_rule: int = 0,
     ):
-        day_time = int(time.mktime(datetime.date.today().timetuple())) * 1000
+        day_time = 1733155200000 # int(time.mktime(datetime.date.today().timetuple())) * 1000
         session_id = self.headers["current_session_id"]
         responses = requests.get(
             f"https://static.moutai519.com.cn/mt-backend/xhr/front/mall/shop/list/slim/v3/{session_id}/{province}/{item_code}/{day_time}"
