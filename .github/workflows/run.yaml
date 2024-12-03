@@ -23,10 +23,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         sudo timedatectl set-timezone Asia/Shanghai
-<<<<<<< HEAD
-
-=======
->>>>>>> c8e40e2405ded29324c7206c09510af06aa0cb62
 
     - name: Run sign-in script
       run: python main.py
