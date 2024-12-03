@@ -105,7 +105,7 @@ userId: 2
         dict.update(self.headers, {"MT-APP-Version": self.mt_version})
 
     def get_current_session_id(self):
-        day_time = 1733155200000 #int(time.mktime(datetime.date.today().timetuple())) * 1000
+        day_time = int(time.mktime(datetime.date.today().timetuple())) * 1000
         my_url = f"https://static.moutai519.com.cn/mt-backend/xhr/front/mall/index/session/get/{day_time}"
         responses = requests.get(my_url)
         if responses.status_code != 200:
@@ -209,7 +209,7 @@ userId: 2
         lng: str = "102.182324",
         reserve_rule: int = 0,
     ):
-        day_time = 1733155200000 # int(time.mktime(datetime.date.today().timetuple())) * 1000
+        day_time = int(time.mktime(datetime.date.today().timetuple())) * 1000
         session_id = self.headers["current_session_id"]
         responses = requests.get(
             f"https://static.moutai519.com.cn/mt-backend/xhr/front/mall/shop/list/slim/v3/{session_id}/{province}/{item_code}/{day_time}"
