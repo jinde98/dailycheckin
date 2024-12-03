@@ -2,7 +2,8 @@
 
 ## 功能简介
 
-这个 GitHub Action 用于执行各种服务的每日签到任务，目前支持有道、阿里云盘、天翼云盘。
+这个 GitHub Action 用于执行各种服务的每日签到任务，目前支持有道、阿里云盘、天翼云盘、茅台申购。
+茅台申购自动生成配置文件，需要在本地运行imaotai_login.py。如果有redis，可以把配置文件保存到redis，这样可以再githu上运行。
 
 ## 如何配置
 
@@ -16,7 +17,8 @@
    - `YOUDAO_COOKIE`: 你的有道云笔记签到 Cookie。登录有道网页版本，按F12后选择 网络network标签，刷新下网页随便点一个加载的页面，按下图内容复制
      
       ![image](https://github.com/jinde98/dailycheckin/assets/127750182/2fc6fc11-b1bd-4d6c-b4ff-f0f42d5d5ffe)
-   - `REDIS_INFO` ：REDIS存储有道笔记cookie和阿里云盘的刷新令牌，保证自动更新令牌。（有道的笔记在Action中登录并获取cookie还有问题，但在本地运行没问题）可以去官网https://redis.io/try-free/ 申请一个账户，免费有30m空间，足够保存令牌信息了。
+   - `REDIS_INFO` ：REDIS存储有道笔记cookie和阿里云盘的刷新令牌，保证自动更新令牌。（有道的笔记在Action中登录并获取cookie还有问题，但在本地运行没问题）可以去官网https://redis.io/try-free/ 申请一个账户，免费有30m空间，足够保存令牌信息了。茅台申购的config.json也放入redis了。
+   - `AMAP_KEY `: 高德地图的key（用于茅台申购定位）
 
    - `PUSHPLUS_TOKEN`: 你的 Pushplus 令牌。
    - `SERVERCHAN_SENDKEY`: 你的 ServerChan 发送密钥。
@@ -40,9 +42,10 @@
     - 
 ## 支持的服务
 支持的签到
-- **阿里云盘**: 每日签到。
+- **阿里云盘**: 暂时无法使用。
 - **天翼云盘**: 每日签到。
 - **有道云笔记**: 每日签到。
+- **茅台申购**： 每日9-10点自动申购
 
 支持的推送有
 - **Pushplus**: 通知服务。
