@@ -41,6 +41,7 @@ jobs:
         REDIS_INFO: ${{ secrets.REDIS_INFO }}
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         AMAP_KEY: ${{ secrets.AMAP_KEY }}
+        DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
     - name: Commit and push if there are changes
       run: |
         git config --global user.email "jinde98@163.com"
