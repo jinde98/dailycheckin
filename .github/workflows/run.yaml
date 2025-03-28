@@ -42,14 +42,14 @@ jobs:
         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
         AMAP_KEY: ${{ secrets.AMAP_KEY }}
         DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
-    - name: Commit and push if there are changes
-      run: |
-        git config --global user.email "jinde98@163.com"
-        git config --global user.name "jinde98"
-        if [ -f "screenshot_after_login.png" ]; then
-          git add screenshot_after_login.png
-          git commit -m "Add screenshot" -a || exit 0  # 如果没有更改，退出
-          git push
-        else
-          echo "screenshot_after_login.png does not exist, skipping commit and push."
-        fi
+    # - name: Commit and push if there are changes
+    #   run: |
+    #     git config --global user.email "jinde98@163.com"
+    #     git config --global user.name "jinde98"
+    #     if [ -f "screenshot_after_login.png" ]; then
+    #       git add screenshot_after_login.png
+    #       git commit -m "Add screenshot" -a || exit 0  # 如果没有更改，退出
+    #       git push
+    #     else
+    #       echo "screenshot_after_login.png does not exist, skipping commit and push."
+    #     fi
