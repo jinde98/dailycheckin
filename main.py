@@ -1,4 +1,3 @@
-
 from message_send import MessageSend
 from config import message_tokens, youdao_cookie,ali_refresh_token,ty_pwd,ty_user,youdao_user, redis_info, RedisUtil
 import aliyunpan, tianyiyunpan,YouDao_user_login, imaotai
@@ -27,8 +26,3 @@ def run():
     send.send_all(message_tokens,title+'每日签到',content)
 if __name__ == "__main__":
     run()
-
-
-    
-
-

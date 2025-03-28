@@ -1,9 +1,9 @@
-# 每日签到 GitHub Action部署
+# 每日签到 GitHub Action 部署
 
 ## 功能简介
 
-这个 GitHub Action 用于执行各种服务的每日签到任务，目前支持有道、阿里云盘、天翼云盘、茅台申购。
-茅台申购自动生成配置文件，需要在本地运行imaotai_login.py。如果有redis，可以把配置文件保存到redis，这样可以再githu上运行。
+这个 GitHub Action 用于执行各种服务的每日签到任务，这样可以不用服务器来运行，目前支持有道、天翼云盘、茅台申购。
+茅台申购自动生成配置文件，需要在本地运行imaotai_login.py。如果有redis，可以把配置文件保存到redis，这样可以再github上运行。
 
 ## 如何配置
 
@@ -27,6 +27,7 @@
    - `BARK_DEVICEKEY`: 你的 Bark 设备密钥。
    - `FEISHU_DEVICEKEY`: 你的飞书设备密钥。
    - `TELEGRAM_TOKEN`: 你的 Telegram 机器人令牌。格式为 bot_token, chat_id （用英文逗号分隔）
+   - `DINGTALK_WEBHOOK`: 你的钉钉机器人的 Webhook URL。
 
 3. **运行 GitHub Action**: 该 Action 预定在每天 UTC 0:00 运行。你可以在 "Actions" 标签页中查看工作流的运行状态。
 
@@ -58,9 +59,46 @@
 ## 待改进内容
 - **有道云笔记** 自动更新cookies
 
-其他签到内容.......
-
 后续待增加.......
+
+## 本地开发
+
+要在本地运行此项目，您需要：
+
+1.  使用 `pip install -r requirements.txt` 安装所需的依赖项。
+2.  基于 `.env.example` 文件创建 `.env` 文件，并填写所需的环境变量。
+3.  运行 `imaotai_login.py` 脚本以生成茅台申购的 `config.json` 文件，如果配置的redis，会把config.json上传到redis。
+4.  运行 `main.py` 脚本以执行每日签到任务。
+
+## 项目依赖
+
+项目的依赖项在 `requirements.txt` 文件中列出：
+
+```
+requests
+redis
+python-dotenv
+```
+
+## 项目配置
+
+项目的配置位于 `config.py` 文件中。此文件包含各种服务和通知的设置。
+
+## 项目结构
+
+项目的入口点是 `main.py` 文件。其他重要文件包括：
+
+-   `aliyunpan.py`: 包含阿里云盘签到的代码。
+-   `tianyiyunpan.py`: 包含天翼云盘签到的代码。
+-   `YouDao_user_login.py`: 包含有道云笔记签到的代码。
+-   `imaotai.py`: 包含茅台申购的代码。
+-   `message_send.py`: 包含发送通知的代码。
+-   `.env.example`: 提供了需要设置的环境变量的示例。
+-   `.gitignore`: 指定了 Git 应该忽略的未跟踪文件。
+
+## 未来改进
+
+我们计划在未来增加对更多签到服务和通知方式的支持。
 
 ## 感谢
 

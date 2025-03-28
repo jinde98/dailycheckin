@@ -11,6 +11,7 @@ class MessageSend:
         self.register("weCom_webhook", self.weCom_bot)
         self.register("bark_deviceKey", self.bark)
         self.register("feishu_deviceKey", self.feishu)
+        self.register("dingtalk_webhook", self.dingtalk)
 
     def register(self, token_name, callback):
         assert token_name not in self.sender, "Register fails, the token name exists."
@@ -203,3 +204,26 @@ class MessageSend:
             print(f"[Telegram] [Send Message Response] {resp.text}")
             return -1
         return 0
+
+    def dingtalk(self, webhook, title, content):
+        assert type(webhook) == str, "Wrong type for DingTalk webhook."
+        url = webhook
+        headers = {
+            "Content-Type": "application/json",
+        }
+        # 将标题与内容组合成一条消息
+        text_message = f"{title}\n{content}"
+        data = {
+            "msgtype": "text",
+            "text": {
+                "content": text_message
+            }
+        }
+        resp = requests.post(url, headers=headers, json=data)
+        resp_json = resp.json()
+        if resp_json.get("errcode") == 0:
+            print("[DingTalk] Send message to DingTalk successfully.")
+            return 0
+        else:
+            print(f"[DingTalk][Send Message Response] {resp.text}")
+            return -1

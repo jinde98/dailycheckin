@@ -11,13 +11,14 @@ youdao_cookie = os.environ.get('YOUDAO_COOKIE')
 amap_key = os.environ.get('AMAP_KEY')
 
 message_tokens = {
-    'pushplus_token': os.environ.get('PUSHPLUS_TOKEN') ,
+    'pushplus_token': os.environ.get('PUSHPLUS_TOKEN'),
     'serverChan_token': os.environ.get('SERVERCHAN_SENDKEY'),
     'weCom_tokens': os.environ.get('WECOM_TOKENS'),
     'weCom_webhook': os.environ.get('WECOM_WEBHOOK'),
     'bark_deviceKey': os.environ.get('BARK_DEVICEKEY'),
     'feishu_deviceKey': os.environ.get('FEISHU_DEVICEKEY'),
     'telegram_token': os.environ.get('TELEGRAM_TOKEN'),
+    'dingtalk_webhook': os.environ.get('DINGTALK_WEBHOOK')  # 新增钉钉 webhook 配置
 }
 
 import redis
