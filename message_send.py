@@ -1,5 +1,6 @@
 import requests
 import json
+import config
 
 class MessageSend:
     def __init__(self):
@@ -207,7 +208,7 @@ class MessageSend:
 
     def dingtalk(self, webhook, title, content):
         assert type(webhook) == str, "Wrong type for DingTalk webhook."
-        url = webhook
+        url = f"https://oapi.dingtalk.com/robot/send?access_token={webhook}"
         headers = {
             "Content-Type": "application/json",
         }
@@ -227,3 +228,8 @@ class MessageSend:
         else:
             print(f"[DingTalk][Send Message Response] {resp.text}")
             return -1
+
+if __name__ == "__main__":
+    message = MessageSend()
+    #钉钉群机器人发送测试
+    message.dingtalk(config.message_tokens.get("dingtalk_webhook"), "测试","测试正文")
