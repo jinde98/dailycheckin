@@ -16,11 +16,11 @@ def run():
     # if ty_user != None and ty_pwd != None:
     #     content += tianyiyunpan.main(ty_user, ty_pwd)+'\n\n'
     #     title += "【天翼】"
-    if redis_info != None:
-        datas = RedisUtil(redis_info).get('IMAOTAI') # 获取Redis取得茅台配置数据
-        _check_item = datas.get("IMAOTAI", [])[0]
-        content+= imaotai.IMAOTAI(check_item=_check_item).main()
-        title += "【茅台】"
+    # if redis_info != None:
+    #     datas = RedisUtil(redis_info).get('IMAOTAI') # 获取Redis取得茅台配置数据
+    #     _check_item = datas.get("IMAOTAI", [])[0]
+    #     content+= imaotai.IMAOTAI(check_item=_check_item).main()
+    #     title += "【茅台】"
 
     send = MessageSend()
     send.send_all(message_tokens,title+'每日签到',content)
